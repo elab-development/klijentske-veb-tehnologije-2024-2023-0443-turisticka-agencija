@@ -8,9 +8,10 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <>
+  <h1>React, aplikacija</h1>
+  <p>Paragraf</p>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
