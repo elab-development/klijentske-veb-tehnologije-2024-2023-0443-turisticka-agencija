@@ -1,30 +1,49 @@
-import React from 'react'
+import React, { use, useEffect, useState } from 'react';
 import "../css/navbar.css";
-import "../App"
-import Putovanja from "../pages/Putovanja"
 
 function NavBar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
   return (
-    <nav>
-      <div className='NavContainer'>
+      <div className={`NavContainer ${scrolled ? 'nav-scrolled' : ''}`}>
         <div className='NavBar'>
+
           <div className='left-part'>
             <p className='Logo'>GoTravel</p>
-            <div className='right-part'>
-              <div className='links'>
-                <a href='#'>Pocetna</a>
-                <a href='#'>Putovanja</a>
-                <a href='#'>Kontakt</a>
-              </div>
-              <div className='sign-in'>
-                <a href='#'>Registracija</a>
-                <a href='#'>Moj Profil</a>
-              </div>
+          </div>
+          
+          <button className='burger' onClick={toggleMenu}>
+              <span className='line'></span>
+              <span className='line'></span>
+              <span className='line'></span>
+            </button>
+
+          <div className={`right-part ${menuOpen ? 'show' : ''}`}>
+            <div className='links'>
+              <a href='#'>Početna</a>
+              <a href='#'>Putovanja</a>
+              <a href='#'>Kontakt</a>
+              <a href='#'>Moj Profil</a>
+              <a href='#'>Registracija</a>
             </div>
           </div>
+
         </div>
       </div>
-    </nav>
   )
 }
 

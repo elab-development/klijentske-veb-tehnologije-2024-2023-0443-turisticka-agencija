@@ -2,13 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar';
-import Pocetna from './components/Pocetna';
+import Hero from './components/Hero';
 
 function App() {
   return (
     <div className="App">
       <NavBar/>
-      <Pocetna/>
+      <Hero/>
+
     </div>
   );
 }
