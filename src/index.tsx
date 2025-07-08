@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Putovanja from './pages/Putovanja';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <>
-  <h1>React, aplikacija</h1>
-  <p>Paragraf</p>
+    <App></App>
+    
   </>
 );
 
