@@ -1,0 +1,52 @@
+.container{
+    width: 90%;
+    max-width: 400px;
+    margin: 40px auto;
+    padding-top: 120px;
+}
+
+.tabs{
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.tab{
+    flex: 1;
+    padding: 15px;
+    background-color: #54B9FF;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.tab.active{
+    background-color: #FF8854;
+    color: white;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form input{
+    padding: 15px;
+    font-size: 14px;
+}
+
+.form button{
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #54B9FF;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form button:hover{
+    background-color: #FF8854;
+}

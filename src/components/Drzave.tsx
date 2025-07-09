@@ -10,22 +10,22 @@ const drzave = [
     {
         slika: Francuska,
         naziv: 'Francuska',
-        link: '#'
+        link: '/Putovanja'
     },
     {
         slika: Spanija,
         naziv: 'Španija',
-        link: '#'
+        link: '/Putovanja'
     },
     {
         slika: Italija,
         naziv: 'Italija',
-        link: '#'
+        link: '/Putovanja'
     },
     {
         slika: Austrija,
         naziv: 'Austrija',
-        link: '#'
+        link: '/Putovanja'
     }
 ];
 

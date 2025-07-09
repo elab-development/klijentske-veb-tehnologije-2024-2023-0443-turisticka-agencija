@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/karticaDrzave.css';
+import {Link} from 'react-router-dom'
 
 type Props = {
     slika: string;
@@ -11,7 +12,7 @@ const KarticaDrzave: React.FC<Props> = ({ slika, naziv, link}) => {
     return (
         <div className='drzava-kartica'>
             <img src={slika} alt={naziv} />
-            <a href={link} className='link-drzava'>{naziv}</a>
+            <Link to={link} className='link-drzava'>{naziv}</Link>
         </div>
     )
 }
