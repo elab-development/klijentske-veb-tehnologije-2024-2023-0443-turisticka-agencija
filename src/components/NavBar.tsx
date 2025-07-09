@@ -1,8 +1,15 @@
 import React, { use, useEffect, useState } from 'react';
 import "../css/navbar.css";
-import {Link} from 'react-router-dom'
+import {Link,useLocation} from 'react-router-dom'
+
+/*
+ Imas na novom mejlu kako da dodas vise transparenih
+*/
 
 function NavBar() {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -20,7 +27,7 @@ function NavBar() {
   };
 
   return (
-      <div className={`NavContainer ${scrolled ? 'nav-scrolled' : ''}`}>
+      <div className={`NavContainer ${isHomePage ? (scrolled ? 'nav-scrolled' : '') : 'nav-scrolled'}`}>
         <div className='NavBar'>
 
           <div className='left-part'>
@@ -61,11 +68,9 @@ function NavBar() {
 
         </div>
       </div>
+    
   )
 }
 
 export default NavBar
 
-/*
-
-*/

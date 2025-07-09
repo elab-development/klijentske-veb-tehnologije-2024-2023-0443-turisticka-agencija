@@ -1,0 +1,48 @@
+.kontakt-forma-container{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 48px 16px;
+    text-align: center;
+    padding-top: 100px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h2{
+    color: #000;
+}
+
+.kontakt-forma textarea{
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: 270px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    margin-bottom: 16px;
+}
+
+.kontakt-forma button{
+    background-color: #54b9ff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+}
+
+.kontakt-forma button:hover{
+    background-color: #FF8854;
+}
+
+.poslata-poruka{
+    margin-top: 16px;
+    color: green;
+    font-weight: bold;
+}

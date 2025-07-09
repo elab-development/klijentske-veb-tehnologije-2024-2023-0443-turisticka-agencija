@@ -10,9 +10,10 @@ function Footer() {
         <div className='footer-sadrzaj'>
 
             <div className='footer-kontakt'>
-                <p>Email: kontakt@agencija.rs</p>
+                <p>Email: gotravel@gmail.com</p>
                 <p>Telefon: +381 11 123 456</p>
                 <p>Adresa: Bulevar Kralja Aleksandra 73, Beograd</p>
+                <p>Radno vreme: Pon-Pet: 09:00-17:00</p>
             </div>
             
             <div className='footer-ikonice'>
