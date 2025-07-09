@@ -1,5 +1,6 @@
 import React from 'react'
 import '../css/hero.css';
+import {Link} from 'react-router-dom'
 
 function Hero() {
   return (
@@ -8,7 +9,7 @@ function Hero() {
         <div className="hero-content">
           <h1>Kreni na put svojih snova</h1>
           <p>Evropske metropole. Pristupačne cene. Nezaboravna iskustva.</p>
-          <button className="hero-button">Pogledaj ponudu</button>
+          <Link to='/Putovanja' className="hero-button">Pogledaj ponudu</Link>
         </div>
       </div>
     </section>

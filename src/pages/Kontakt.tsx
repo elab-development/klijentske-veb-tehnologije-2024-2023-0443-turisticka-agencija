@@ -1,13 +1,12 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
 
-function Putovanja() {
+function Kontakt() {
   return (
-    <div className='Putovanja'>
+    <>
         <NavBar/>
-        
-    </div>
+    </>
   )
 }
 
-export default Putovanja
+export default Kontakt

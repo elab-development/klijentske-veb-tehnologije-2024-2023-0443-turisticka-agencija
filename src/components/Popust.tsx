@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/popust.css'
 import popust from '../slike/Popust-slika.jpg'
+import {Link} from 'react-router-dom'
 
 function Popust() {
   return (
@@ -11,7 +12,8 @@ function Popust() {
             </div>
             <div className='popust-tekst'>
                 <h2>Prijavite se i ostvarite 10% popusta na sledeće putovanje!</h2>
-                <button className='popust-dugme'>Prijavi se</button>
+                <Link to='/Registracija' className='popust-dugme'>Prijavi se</Link>
+                
             </div>
         </div>
     </section>

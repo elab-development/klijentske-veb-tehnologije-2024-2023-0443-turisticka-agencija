@@ -1,13 +1,12 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
 
-function Putovanja() {
+function Registracija() {
   return (
-    <div className='Putovanja'>
+    <>
         <NavBar/>
-        
-    </div>
+    </>
   )
 }
 
-export default Putovanja
+export default Registracija

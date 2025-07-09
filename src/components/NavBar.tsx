@@ -1,5 +1,6 @@
 import React, { use, useEffect, useState } from 'react';
 import "../css/navbar.css";
+import {Link} from 'react-router-dom'
 
 function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,25 +39,24 @@ function NavBar() {
 
           <div className='right-part'>
             <div className='links'>
-              <a href='#'>Početna</a>
-              <a href='#'>Putovanja</a>
-              <a href='#'>Kontakt</a>
-              <a href='#'>Moj Profil</a>
-              <a href='#'>Registracija</a>
+              <Link to='/'>Početna</Link>
+              <Link to='/Putovanja'>Putovanja</Link>
+              <Link to='/Kontakt'>Kontakt</Link>
+              <Link to='/MojProfil'>Moj Profil</Link>
+              <Link to='/Registracija'>Registracija</Link>
             </div>
           </div>
 
           {menuOpen &&(
             <div className='mobile-menu'>
               <ul className='mobile-links'>
-                <li><a href="#" onClick={() => setMenuOpen(false)}>Početna <span>&rsaquo;</span></a></li>
-                <li><a href="#" onClick={() => setMenuOpen(false)}>Putovanja <span>&rsaquo;</span></a></li>
-                <li><a href="#" onClick={() => setMenuOpen(false)}>Kontakt <span>&rsaquo;</span></a></li>
-                <li><a href="#" onClick={() => setMenuOpen(false)}>Moj Profil <span>&rsaquo;</span></a></li>
-                <li><a href="#" onClick={() => setMenuOpen(false)}>Registracija <span>&rsaquo;</span></a></li>
+                <li><Link to='/' onClick={() => setMenuOpen(false)}>Početna <span>&rsaquo;</span></Link></li>
+                <li><Link to='/Putovanja' onClick={() => setMenuOpen(false)}>Putovanja <span>&rsaquo;</span></Link></li>
+                <li><Link to='/Kontakt' onClick={() => setMenuOpen(false)}>Kontakt <span>&rsaquo;</span></Link></li>
+                <li><Link to='/MojProfil' onClick={() => setMenuOpen(false)}>Moj Profil <span>&rsaquo;</span></Link></li>
+                <li><Link to='/Registracija' onClick={() => setMenuOpen(false)}>Registracija <span>&rsaquo;</span></Link></li>
               </ul>
             </div>
-
           )}
 
         </div>
