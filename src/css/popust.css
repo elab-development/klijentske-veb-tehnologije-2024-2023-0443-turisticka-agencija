@@ -1,0 +1,55 @@
+.popust-sekcija{
+    background-color: #54B9FF;
+    padding: 64px 32px;
+}
+
+.popust-sadrzaj{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.popust-slika img{
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.popust-tekst{
+    max-width: 500px;
+    text-align: left;
+}
+
+.popust-tekst h2{
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.popust-dugme{
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+}
+
+.popust-dugme:hover{
+    background-color: #FF8854;
+}
+
+@media ( max-width: 768px){
+    .popust-tekst{
+        text-align: center;
+    }
+}

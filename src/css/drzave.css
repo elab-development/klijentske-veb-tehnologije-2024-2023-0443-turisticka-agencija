@@ -20,3 +20,9 @@
     padding: 0 16px;
     margin-bottom: 100px;
 }
+
+@media (max-width: 768px){
+    .drzave-grid{
+        gap: 72px;
+    }
+}

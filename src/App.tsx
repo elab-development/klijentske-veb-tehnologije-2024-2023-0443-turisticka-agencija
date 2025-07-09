@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Hero from './components/Hero';
 import Drzave from './components/Drzave';
+import Popust from './components/Popust';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <NavBar/>
       <Hero/>
       <Drzave/>
-      <Hero/>
+      <Popust/>
+      
     </div>
   );
 }
