@@ -27,12 +27,16 @@ function NavBar() {
           </div>
           
           <button className='burger' onClick={toggleMenu}>
+            {menuOpen ? '✕' : (
+              <>
               <span className='line'></span>
               <span className='line'></span>
-              <span className='line'></span>
+              <span className='line'></span>  
+              </>
+            )}      
             </button>
 
-          <div className={`right-part ${menuOpen ? 'show' : ''}`}>
+          <div className='right-part'>
             <div className='links'>
               <a href='#'>Početna</a>
               <a href='#'>Putovanja</a>
@@ -42,6 +46,19 @@ function NavBar() {
             </div>
           </div>
 
+          {menuOpen &&(
+            <div className='mobile-menu'>
+              <ul className='mobile-links'>
+                <li><a href="#" onClick={() => setMenuOpen(false)}>Početna <span>&rsaquo;</span></a></li>
+                <li><a href="#" onClick={() => setMenuOpen(false)}>Putovanja <span>&rsaquo;</span></a></li>
+                <li><a href="#" onClick={() => setMenuOpen(false)}>Kontakt <span>&rsaquo;</span></a></li>
+                <li><a href="#" onClick={() => setMenuOpen(false)}>Moj Profil <span>&rsaquo;</span></a></li>
+                <li><a href="#" onClick={() => setMenuOpen(false)}>Registracija <span>&rsaquo;</span></a></li>
+              </ul>
+            </div>
+
+          )}
+
         </div>
       </div>
   )
@@ -49,3 +66,6 @@ function NavBar() {
 
 export default NavBar
 
+/*
+
+*/
