@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../css/regpri.css'
 
-/*zasto kada se prebaci sa registruj na prijavi postoji nesto u poljima?*/
-
 function RegPri() {
     const [activeTab, setActiveTab] = useState<'register' | 'login'>('register');
     const navigate = useNavigate();
@@ -46,7 +44,7 @@ function RegPri() {
         </div>
 
         {activeTab === 'register' ? (
-            <form className='form' onSubmit={handleRegister}>
+            <form key='register' className='form' onSubmit={handleRegister}>
                 <input type="text" placeholder='Ime i prezime' required/>
                 <input type="email" placeholder='Email' required/>
                 <input type="password" placeholder='Lozinka' required/>
@@ -54,7 +52,7 @@ function RegPri() {
                 <button type='submit'>Registruj se</button>
             </form>
         ) : (
-            <form className='form' onSubmit={handleLogin}>
+            <form key='login' className='form' onSubmit={handleLogin}>
                 <input type="email" placeholder='Email' required/>
                 <input type="password" placeholder='Lozinka' required/>
                 <button type='submit'>Prijavi se</button>

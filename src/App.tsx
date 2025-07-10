@@ -5,11 +5,13 @@ import Putovanja from './pages/Putovanja';
 import Kontakt from './pages/Kontakt';
 import MojProfil from './pages/MojProfil';
 import Registracija from './pages/Registracija';
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop/>
     <Routes>
       <Route index element={<Pocetna/>}/>
       <Route path='/Putovanja' element={<Putovanja/>}/>
