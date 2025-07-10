@@ -1,35 +1,48 @@
 import React, { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/kontaktUpit.css'
 
 function KontaktUpit() {
-  const [poruka, setPoruka] = useState('');
-  const [porukaPoslata, setPorukaPoslata] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { naziv, cena, termini } = location.state || {};
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    const [brojOsoba, setBrojOsoba] = useState('');
+    const [izabraniTermin, setIzabraniTermin] = useState('');
+    const [poruka, setPoruka] = useState('');
 
-    if(!poruka.trim()) return;
+    const handlePosalji = () => {
+      const podaci = {
+        naziv,
+        cena,
+        izabraniTermin,
+        brojOsoba,
+        poruka
+      };
+      navigate('/MojProfil', { state: podaci });
+    };
 
-    setPorukaPoslata(true);
-    setPoruka('');
-    setTimeout(() => {
-        setPorukaPoslata(false);
-    }, 3000);
-   };
   
     return (
-    <div className='kontakt-forma-container'>
-        <h2>Pošaljite upit:</h2>
+    <div className='kontakt-container'>
+        <h2>Pošaljite upit</h2>
+        <p className='kontakt-info'><strong>Destinacija:</strong>{naziv}</p>
+        <p className='kontakt-info'><strong>Cena:</strong>{cena}€</p>
 
-        <form onSubmit={handleSubmit} className='kontakt-forma'>
-            <textarea placeholder='Unesite Vašu poruku...' value={poruka} 
-            onChange={(e) => setPoruka(e.target.value)} required/>
-            <button type='submit'>Pošalji</button>
-        </form>
+        <label>Broj osoba:</label>
+        <input type="number" value={brojOsoba} onChange={e => setBrojOsoba(e.target.value)} />
 
-        {porukaPoslata &&(
-            <p className='poslata-poruka'>Poruka je uspešno poslata!</p>
-        )}
+        <label>Termin:</label>
+        <select value={izabraniTermin} onChange={e => setIzabraniTermin(e.target.value)}>
+          <option value="">Izaberite termin</option>
+          {termini?.map((t: string, i: number) => (
+            <option key={i} value={t}>{t}</option>
+          ))}
+        </select>
+
+        <label>Poruka:</label>
+        <textarea rows={5} value={poruka} onChange={e => setPoruka(e.target.value)}/>
+        <button onClick={handlePosalji}>Pošalji</button>
     </div>
   )
 }

@@ -1,0 +1,76 @@
+.profil-container{
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.profil-container h2{
+    margin-top: 100px;
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: black;
+}
+
+.upiti-lista{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.upit-kartica{
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.red{
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #444;
+}
+
+.cena{
+    font-weight: bold;
+    color: #FF8854;
+}
+
+.poruka{
+    font-size: 14px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.kartica-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.status{
+    color: #FF8854;
+    font-style: italic;
+}
+
+.kartica-footer button{
+    background-color: #54B9FF;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3 ease;
+}
+
+.kartica-footer button:hover{
+    background-color: #FF8854;
+}

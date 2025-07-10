@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import '../css/putovanjaKomp.css'
 import PutovanjaKart from './PutovanjaKart'
 import barselona from '../slike/barselona.jpg'
@@ -143,6 +144,16 @@ function PutovanjaKomp() {
     const [izabraneDrzave, setIzabraneDrzave] = useState<string[]>([]);
     const [izabraniHit, setIzabaniHit] = useState<string[]>([]);
     const [trenutnaStrana, setTrenutnaStrana] = useState(1);
+    
+    const location = useLocation();
+    const drzavaSaPocetne = location.state?.drzava;
+
+    useEffect(() => {
+        if(drzavaSaPocetne && !izabraneDrzave.includes(drzavaSaPocetne)){
+            setIzabraneDrzave([drzavaSaPocetne]);
+            
+        }
+    }, [drzavaSaPocetne]);
 
     const putovanjaPoStrani = 6;
 
