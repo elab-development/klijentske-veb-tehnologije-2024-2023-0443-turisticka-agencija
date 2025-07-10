@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
     <ScrollToTop/>
     <Routes>
-      <Route index element={<Pocetna/>}/>
+      <Route index path='/' element={<Pocetna/>}/>
       <Route path='/Putovanja' element={<Putovanja/>}/>
       <Route path='/Kontakt' element={<Kontakt/>}/>
       <Route path='/MojProfil' element={<MojProfil/>}/>
