@@ -44,3 +44,9 @@
 .kontakt-container button:hover{
     background-color: #FF8854;
 }
+
+.greska{
+    color: red;
+    font-size: 13px;
+    margin-left: 8px;
+}
