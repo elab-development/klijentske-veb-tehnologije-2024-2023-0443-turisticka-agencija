@@ -6,6 +6,7 @@ import Kontakt from './pages/Kontakt';
 import MojProfil from './pages/MojProfil';
 import Registracija from './pages/Registracija';
 import ScrollToTop from './components/ScrollToTop';
+import PutovanjeDetalji from './pages/PutovanjeDetalji';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path='/Kontakt' element={<Kontakt/>}/>
       <Route path='/MojProfil' element={<MojProfil/>}/>
       <Route path='/Registracija' element={<Registracija/>}/>
+      <Route path='/Putovanja/:id' element={<PutovanjeDetalji/>}/>
     </Routes>
     </BrowserRouter>
   );

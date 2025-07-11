@@ -22,7 +22,7 @@ const PutovanjaKart: React.FC<Props> = ({putovanje}) => {
             <p className='cena'>od {putovanje.cena}€</p>
             <div className='dugmici'>
                 <Link to='/Kontakt' state={{naziv: putovanje.naziv, cena: putovanje.cena, termini: putovanje.datumi}} className='dugme tamno'>POŠALJI UPIT</Link>
-                <Link to='/' className='dugme svetlo'>SAZNAJ VIŠE</Link>
+                <Link to={`/Putovanja/${putovanje.id}`} className='dugme svetlo'>SAZNAJ VIŠE</Link>
             </div>
         </div>
     )
