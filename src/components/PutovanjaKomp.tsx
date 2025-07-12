@@ -2,151 +2,31 @@ import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import '../css/putovanjaKomp.css'
 import PutovanjaKart from './PutovanjaKart'
-import barselona from '../slike/barselona.jpg'
-import milano from '../slike/Milano.jpg'
-import cinque from '../slike/Cinque.jpg'
-import rim from '../slike/Rim.jpg'
-import venecija from '../slike/Venecija.jpg'
-import bec from '../slike/Bec.jpg'
-import valensija from '../slike/Valensija.jpg'
-import pariz from '../slike/Pariz.jpg'
-import nica from '../slike/Nica.jpg'
-import kolmar from '../slike/Kolmar.jpg'
-
-export interface Putovanje{
-    id: number;
-    naziv: string;
-    drzava: string;
-    slika: string;
-    cena: number;
-    datumi: string[];
-    lastMinute: boolean;
-    naAkciji: boolean;
-}
-
-const svaPutovanja: Putovanje[] =[
-    {
-        id: 1,
-        naziv: 'Milano | 5 dana / 2 noćenja',
-        drzava: 'Italija',
-        slika: milano,
-        cena: 159,
-        datumi: ['28.08. - 01.09.', '25.09. - 29.09.', '23.10. - 27.10.', '07.11. - 11.11.'],
-        lastMinute: false,
-        naAkciji: false,
-    },
-    {
-        id: 2,
-        naziv: 'Toskana i Cinque Terre | 6 dana / 3 noćenja',
-        drzava: 'Italija',
-        slika: cinque,
-        cena: 169,
-        datumi: ['27.08. - 01.09.', '24.09. - 29.09.', '22.10. - 27.10.'],
-        lastMinute: false,
-        naAkciji: true,
-    },
-    {
-        id: 3,
-        naziv: 'Rim | 6 dana / 3 noćenja',
-        drzava: 'Italija',
-        slika: rim,
-        cena: 235,
-        datumi: ['22.08. - 27.08.', '30.09. - 05.10.'],
-        lastMinute: true,
-        naAkciji: false,
-    },
-    {
-        id: 4,
-        naziv: 'Severna Italija | 4 dana / 3 noćenja',
-        drzava: 'Italija',
-        slika: venecija,
-        cena: 79,
-        datumi: ['22.08. - 25.08.', '19.09. - 22.09.'],
-        lastMinute: true,
-        naAkciji: false,
-    },
-    {
-        id: 5,
-        naziv: 'Beč | 5 dana / 2 noćenja',
-        drzava: 'Austrija',
-        slika: bec,
-        cena: 119,
-        datumi: ['21.08. - 25.08.', '25.09. - 29.09.', '16.10. - 20.10.', '08.11. - 12.11.'],
-        lastMinute: false,
-        naAkciji: false,
-    },
-    {
-        id: 6,
-        naziv: 'Barselona | 4 dana / 3 noćenja - avion',
-        drzava: 'Španija',
-        slika: barselona,
-        cena: 539,
-        datumi: ['08.08. - 14.08.', '05.09. - 11.09.'],
-        lastMinute: true,
-        naAkciji: false,
-    },
-    {
-        id: 7,
-        naziv: 'Valensija | 4 dana / 3 noćenja - avion',
-        drzava: 'Španija',
-        slika: valensija,
-        cena: 629,
-        datumi: ['13.11. - 21.11.'],
-        lastMinute: false,
-        naAkciji: false,
-    },
-    {
-        id: 8,
-        naziv: 'Pariz | 4 dana / 3 noćenja - avion',
-        drzava: 'Francuska',
-        slika: pariz,
-        cena: 649,
-        datumi: ['16.08. - 25.08', '10.10. - 17.10.'],
-        lastMinute: true,
-        naAkciji: true,
-    },
-    {
-        id: 9,
-        naziv: 'Nica | 4 dana / 3 noćenja - avion',
-        drzava: 'Francuska',
-        slika: nica,
-        cena: 299,
-        datumi: ['01.08. - 05.08.', '15.08. - 19.08.', '22.08. - 26.08.', '03.09. - 07.09.'],
-        lastMinute: true,
-        naAkciji: false,
-    },
-    {
-        id: 10,
-        naziv: 'Kolmar | 6 dana / 3 noćenja',
-        drzava: 'Francuska',
-        slika: kolmar,
-        cena: 279,
-        datumi: ['07.11. - 12.11.'],
-        lastMinute: false,
-        naAkciji: false,
-    }
-    /*
-    {
-        id: ,
-        naziv: ,
-        drzava: ,
-        slika: ,
-        cena: ,
-        datumi: ,
-        lastMinute: ,
-        naAkciji: ,
-    }
-    */ 
-]
+import { Putovanje } from '../models/Putovanje'
+import axios from 'axios'
 
 function PutovanjaKomp() {
     const [search, setSearch] = useState('');
     const [izabraneDrzave, setIzabraneDrzave] = useState<string[]>([]);
     const [izabraniHit, setIzabaniHit] = useState<string[]>([]);
     const [trenutnaStrana, setTrenutnaStrana] = useState(1);
+    const [putovanja, setPutovanja] = useState<Putovanje[]>([]);
     
     const location = useLocation();
     const drzavaSaPocetne = location.state?.drzava;
+
+    interface Podaci {
+        destinacije: Record<string, Putovanje>;
+    }
+
+    useEffect(() => {
+        axios.get<Podaci>('/podaci.json')
+            .then(res => {
+                const nizPutovanja = Object.values(res.data.destinacije);
+                setPutovanja(nizPutovanja);
+            })
+            .catch(err => console.error("Greška prilikom učitavanja podataka:", err));
+    }, []);
 
     useEffect(() => {
         if(drzavaSaPocetne && !izabraneDrzave.includes(drzavaSaPocetne)){
@@ -165,7 +45,7 @@ function PutovanjaKomp() {
         setIzabaniHit(prev => prev.includes(hit) ? prev.filter(h => h !== hit) : [...prev,hit]);
     };
 
-    const filtriranaPutovanja = svaPutovanja.filter(putovanje =>{
+    const filtriranaPutovanja = putovanja.filter(putovanje =>{
         const poklapanjePoSearch = putovanje.naziv.toLowerCase().includes(search.toLowerCase());
         const poklapanjePoDrzavi = izabraneDrzave.length === 0 || izabraneDrzave.includes(putovanje.drzava);
         const poklapanjePoHitu = 

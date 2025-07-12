@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Pocetna from './pages/Pocetna';
 import Putovanja from './pages/Putovanja';
@@ -7,7 +7,6 @@ import MojProfil from './pages/MojProfil';
 import Registracija from './pages/Registracija';
 import ScrollToTop from './components/ScrollToTop';
 import PutovanjeDetalji from './pages/PutovanjeDetalji';
-
 
 function App() {
   return (

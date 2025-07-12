@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import '../css/mojProfilUpiti.css'
-
-interface Upit{
-    naziv: string;
-    cena: number;
-    izabraniTermin: string;
-    brojOsoba: string;
-    poruka: string;
-}
+import { Upit } from '../models/Upit'
 
 function MojProfilUpiti() {
     const location = useLocation();
@@ -17,12 +10,16 @@ function MojProfilUpiti() {
     const upit = location.state as Upit | null;
     const [upiti, setUpiti] = useState<Upit[]>(() => {
         const sacuvani = localStorage.getItem('upiti');
-        return sacuvani ? JSON.parse(sacuvani) : [];
+        if(sacuvani){
+            const parsed = JSON.parse(sacuvani);
+            return parsed.map((u: any) => new Upit(u.naziv, u.cena, u.izabraniTermin, u.brojOsoba, u.poruka));
+        }
+        return [];
     })
 
     useEffect(() => {
         if(upit){
-            const noviUpiti = [...upiti, upit];
+            const noviUpiti = [...upiti, new Upit(upit.naziv, upit.cena, upit.izabraniTermin, upit.brojOsoba, upit.poruka)];
             setUpiti(noviUpiti);
             localStorage.setItem('upiti', JSON.stringify(noviUpiti));
             navigate('/MojProfil', {replace:true, state: null})
@@ -47,7 +44,7 @@ function MojProfilUpiti() {
                     <div key={i} className='upit-kartica'>
                         <div className='red'>
                             <strong>{u.naziv}</strong>
-                            <span className='cena'>{u.cena}€</span>
+                            <span className='cena'>Ukupna cena: {u.izracunajUkupnuCenu()}€</span>
                         </div>
                         <div className='red'>
                             <span>Termin: {u.izabraniTermin}</span>

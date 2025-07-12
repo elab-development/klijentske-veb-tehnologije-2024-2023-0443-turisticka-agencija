@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/kontaktUpit.css'
+import { Upit } from '../models/Upit'
 
 function KontaktUpit() {
     const location = useLocation();
@@ -28,14 +29,8 @@ function KontaktUpit() {
 
       if(imaGreske) return;
 
-      const podaci = {
-        naziv,
-        cena,
-        izabraniTermin,
-        brojOsoba,
-        poruka
-      };
-      navigate('/MojProfil', { state: podaci });
+      const upit = new Upit(naziv, cena, izabraniTermin, Number(brojOsoba), poruka);
+      navigate('/MojProfil', { state: upit });
     };
 
   

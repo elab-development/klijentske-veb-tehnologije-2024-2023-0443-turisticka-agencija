@@ -1,5 +1,5 @@
 import React from 'react'
-import { Putovanje } from './PutovanjaKomp'
+import { Putovanje } from '../models/Putovanje'
 import '../css/putovanjaKomp.css'
 import { Link } from 'react-router-dom'
 

@@ -1,14 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { svaPutovanja } from '../podaci/putovanjaPodaci'
+import { Putovanje } from '../models/Putovanje'
+import axios from 'axios'
 import NavBar from '../components/NavBar'
 import '../css/putovanjeDetalji.css'
 
 function PutovanjeDetalji() {
     const {id} = useParams();
-    const putovanje = svaPutovanja.find(p => p.id === Number(id));
+    const [putovanje, setPutovanje] = useState<Putovanje | null>(null);
 
-    const [trenutnaSlika, setTrenutnaSlika] = useState(0);
+    const [trenutnaSlika, setTrenutnaSlika] = useState(0)
+
+    interface Podaci {
+        destinacije: Record<string, Putovanje>;
+    }
+
+    useEffect(() => {
+        if (!id) return;
+        axios.get<Podaci>('/podaci.json')
+            .then(res => {
+                const nizPutovanja = Object.values(res.data.destinacije);
+                const idNum = Number(id);
+                const odabrano = nizPutovanja.find(p => p.id === idNum) ?? null;
+
+                if(odabrano){
+                    odabrano.izracunajCenu = () => {
+                        let novaCena = odabrano.cena;
+                        if (odabrano.lastMinute) novaCena += 30;
+                        if (odabrano.naAkciji) novaCena += 15;
+                        return novaCena
+                    }
+                }
+
+                setPutovanje(odabrano);
+            })
+    }, [id]);
 
     if(!putovanje){
         return <p>Putovanje nije pronađeno.</p>
@@ -39,15 +65,27 @@ function PutovanjeDetalji() {
                 </div>
 
                 <div className='info-putovanja'>
-                    <p><strong>Cena od:</strong> {putovanje.cena}€</p>
+                    <div className='cena-oznaka'>
+                        <p className='cene'><strong>Cena od: </strong>
+                            {(putovanje.lastMinute || putovanje.naAkciji) ? (
+                                <>
+                                    <span className='stara-cena'>{putovanje.izracunajCenu?.()}€</span> 
+                                    <span className='nova-cena'>{putovanje.cena}€</span>
+                                </>
+                            ) : (
+                                <span className='nova-cena'>{putovanje.cena}€</span>
+                            )} 
+                        </p>
+                        {putovanje.lastMinute && <p className='hit-ponude'><strong>Last Minute ponuda!</strong></p>}
+                        {putovanje.naAkciji && <p className='hit-ponude'><strong>Na akciji!</strong></p>}
+                    </div>
                     <div className='detalji-termini'>
                         {putovanje.datumi.map((datum, i) =>(
                             <span key={i} className='detalji-termin'>{datum}</span>
                         ))}
                     </div>
                     <Link to='/Kontakt' state={{naziv: putovanje.naziv, cena: putovanje.cena, termini: putovanje.datumi}} className='upit-dugme'>POŠALJI UPIT</Link>
-                    {putovanje.lastMinute && <p><strong>Last Minute ponuda!</strong></p>}
-                    {putovanje.naAkciji && <p><strong>Na akciji!</strong></p>}
+                    
                 </div>
             </div>
 
