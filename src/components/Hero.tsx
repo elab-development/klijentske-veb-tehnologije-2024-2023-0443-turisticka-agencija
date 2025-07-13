@@ -19,10 +19,3 @@ function Hero() {
 export default Hero
 
 
-/*
-    proveriti ovde html i css
-    da li je navbar kad je fiksiran na ovoj strani normalan zbog velicine slike i paddinga 
-    teksta ili je tako namesteno u css-u
-    pokusati dodavanje kada se skroluje da se pojavi pozadina u navbaru
-    burger
-*/
