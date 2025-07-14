@@ -1,6 +1,7 @@
 [
     {
         "ime": "Marko Marković",
+        "pol": "Muski",
         "jezici": ["srpski", "engleski", "francuski", "španski"],
         "drzave": ["Francuska", "Španija", "Italija"],
         "godineIskustva": 12,
@@ -9,6 +10,7 @@
     },
     {
         "ime": "Ivan Petrović",
+        "pol": "Muski",
         "jezici": ["srpski", "engleski"],
         "drzave": ["Austrija", "Španija"],
         "godineIskustva": 3,
@@ -17,6 +19,7 @@
     },
     {
         "ime": "Jovana Filipović",
+        "pol": "Zenski",
         "jezici": ["srpski", "engleski", "nemački", "italijanski", "francuski"],
         "drzave": ["Austrija", "Španija", "Italija", "Francuska"],
         "godineIskustva": 15,

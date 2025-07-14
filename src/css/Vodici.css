@@ -1,0 +1,52 @@
+.vodici-container{
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 16px;
+    padding: 16px;
+    margin: 80px auto 0;
+}
+
+.vodic-kartica{
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.vodic-slika{
+    width: 100%;
+    height: 300px;
+    display: block;
+    object-fit: cover;
+}
+
+.vodic-podaci{
+    margin: 0 0 8px;
+    font-size: 19px;
+    padding: 15px;
+}
+
+.vodic-drzave, .vodic-titule{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.vodic-drzava{
+    background-color: #FF8854;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 13px;
+}
+
+.vodic-titula{
+    background-color: #54B9FF;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 13px;
+}
