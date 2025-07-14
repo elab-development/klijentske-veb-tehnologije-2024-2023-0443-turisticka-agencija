@@ -5,7 +5,6 @@ import RegPri from '../components/RegPri'
 function Registracija() {
   return (
     <>
-        <NavBar/>
         <RegPri/>
     </>
   )
