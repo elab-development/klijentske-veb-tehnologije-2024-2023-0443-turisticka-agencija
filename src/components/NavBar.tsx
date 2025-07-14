@@ -2,10 +2,6 @@ import React, { use, useEffect, useState } from 'react';
 import "../css/navbar.css";
 import {Link,useLocation} from 'react-router-dom'
 
-/*
- Imas na novom mejlu kako da dodas vise transparenih
-*/
-
 function NavBar() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
