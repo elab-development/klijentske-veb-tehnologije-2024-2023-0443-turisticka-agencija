@@ -4,13 +4,15 @@ export class Vodic{
     drzave: string[];
     godineIskustva: number;
     ocena: number;
+    slika: string;
 
-    constructor(ime: string, jezici: string[], drzave: string[], godineIskustva: number, ocena: number){
+    constructor(ime: string, jezici: string[], drzave: string[], godineIskustva: number, ocena: number, slika: string){
         this.ime=ime;
         this.jezici=jezici;
         this.drzave=drzave;
         this.godineIskustva=godineIskustva;
         this.ocena=ocena;
+        this.slika=slika;
     }
 
     jeVisejezican(): boolean{
