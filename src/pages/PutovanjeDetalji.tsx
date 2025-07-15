@@ -32,6 +32,8 @@ function PutovanjeDetalji() {
 
 
     useEffect(() => {
+        sessionStorage.setItem('poslednjaStranica', window.location.pathname);
+
         if (!id) return;
         const idNum = Number(id);
         axios.get<Podaci>('/podaci.json')

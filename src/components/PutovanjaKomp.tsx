@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import '../css/putovanjaKomp.css'
 import PutovanjaKart from './PutovanjaKart'
 import { Putovanje } from '../models/Putovanje'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 function PutovanjaKomp() {
@@ -11,6 +12,7 @@ function PutovanjaKomp() {
     const [izabraniHit, setIzabaniHit] = useState<string[]>([]);
     const [trenutnaStrana, setTrenutnaStrana] = useState(1);
     const [putovanja, setPutovanja] = useState<Putovanje[]>([]);
+    const [poslednjaStranica, setPoslednjaStranica] = useState<string | null>(null);
     
     const location = useLocation();
     const drzavaSaPocetne = location.state?.drzava;
@@ -72,27 +74,40 @@ function PutovanjaKomp() {
         setTrenutnaStrana(1);
     }, [search,izabraneDrzave,izabraniHit]);
 
+    useEffect(() => {
+        const sacuvana = sessionStorage.getItem('poslednjaStranica');
+        setPoslednjaStranica(sacuvana);
+    }, []);
+
   return (
     <div className='putovanja-container'>
-        <div className='filteri'>
-            <h3>Pretražite destinaciju</h3>
-            <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder='Unesite destinaciju'/>
-        
-            <h3>Države</h3>
-            {['Francuska', 'Španija', 'Italija', 'Austrija'].map(drzava => (
-                <label key={drzava}>
-                    <input type="checkbox" checked={izabraneDrzave.includes(drzava)} onChange={() => handlePromenaDrzave(drzava)}/>{' '}
-                    {drzava}
-                </label>
-            ))}
-
-            <h3>HIT Ponude</h3>
-            {['Last Minute', 'Akcija'].map(hit =>(
-                <label key={hit}>
-                    <input type="checkbox" checked={izabraniHit.includes(hit)} onChange={() => handlePromenaHit(hit)}/>{' '}
-                    {hit}
-                </label>
-            ))}
+        <div className='filteri-i-nastavi'>
+            <div className='filteri'>
+                <h3>Pretražite destinaciju</h3>
+                <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder='Unesite destinaciju'/>
+            
+                <h3>Države</h3>
+                {['Francuska', 'Španija', 'Italija', 'Austrija'].map(drzava => (
+                    <label key={drzava}>
+                        <input type="checkbox" checked={izabraneDrzave.includes(drzava)} onChange={() => handlePromenaDrzave(drzava)}/>{' '}
+                        {drzava}
+                    </label>
+                ))}
+    
+                <h3>HIT Ponude</h3>
+                {['Last Minute', 'Akcija'].map(hit =>(
+                    <label key={hit}>
+                        <input type="checkbox" checked={izabraniHit.includes(hit)} onChange={() => handlePromenaHit(hit)}/>{' '}
+                        {hit}
+                    </label>
+                ))}
+            </div>
+            
+            {poslednjaStranica && (
+                <div className='nastavi-container'>
+                    <Link to={poslednjaStranica} className='nastavi-dugme'>Nastavi tamo gde si stao</Link>
+                </div>
+            )}
         </div>
 
         <div className='putovanja'>
