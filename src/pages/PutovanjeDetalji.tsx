@@ -27,7 +27,7 @@ function PutovanjeDetalji() {
     }
 
     useEffect(() => {
-        const sacuvanoIme = localStorage.getItem('imePrezime');
+        const sacuvanoIme = sessionStorage.getItem('imePrezime');
         if(sacuvanoIme) {
             setIme(sacuvanoIme);
         }

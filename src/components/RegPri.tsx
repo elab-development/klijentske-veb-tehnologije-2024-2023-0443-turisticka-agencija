@@ -12,7 +12,7 @@ function RegPri() {
         const form = e.currentTarget;
 
         if(form.checkValidity()){
-            localStorage.setItem('imePrezime', imePrezime);
+            sessionStorage.setItem('imePrezime', imePrezime);
             setActiveTab('login');
         }
         else{

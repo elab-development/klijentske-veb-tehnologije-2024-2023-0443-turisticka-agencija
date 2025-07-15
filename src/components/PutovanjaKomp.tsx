@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 function PutovanjaKomp() {
-    const [search, setSearch] = useState('');
-     
+    const [search, setSearch] = useState(() => {
+        const sacuvanSearch = localStorage.getItem('search');
+        return sacuvanSearch ? sacuvanSearch : '';
+    })
     const [izabraneDrzave, setIzabraneDrzave] = useState<string[]>(() => {
         const sacuvaneDrzave = localStorage.getItem('izabraneDrzave');
         return sacuvaneDrzave ? JSON.parse(sacuvaneDrzave) : [];
@@ -96,6 +98,10 @@ function PutovanjaKomp() {
         localStorage.setItem('izabraniHit', JSON.stringify(izabraniHit));
     }, [izabraniHit])
 
+    useEffect(() => {
+        localStorage.setItem('search', search);
+    }, [search])
+
   return (
     <div className='putovanja-container'>
         <div className='filteri-i-nastavi'>
@@ -120,8 +126,10 @@ function PutovanjaKomp() {
                 ))}
 
                 <button className='reset-filtera' onClick={() => {
+                    setSearch('');
                     setIzabraneDrzave([]);
-                    setIzabaniHit([]);
+                    setIzabaniHit([]);  
+                    localStorage.removeItem('search');
                     localStorage.removeItem('izabraneDrzave');
                     localStorage.removeItem('izabraniHit');
                 }}>Resetuj filtere</button>
