@@ -4,5 +4,5 @@ export interface Recenzija {
     ocena: number;
     komentar: string;
     datum: string;
-    generisiZvezdice: () => string;
+    generisiZvezdice?: () => string;
 }

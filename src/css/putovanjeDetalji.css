@@ -1,7 +1,7 @@
 .detalji-container{
     max-width: 1200px;
     margin: 120px auto 60px auto;
-    padding: 0 20px;
+    padding: 0 20px 20px 20px;
 }
 
 .detalji-container h1{
@@ -130,7 +130,7 @@
 
 .plan-puta{
     margin-top: 48px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .plan-puta h2{
@@ -224,4 +224,72 @@
     }
 }
 
+.destinacija-recenzije{
+    margin-top: 40px;
+    background-color: #f9f9f9;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.recenzije-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.prosecna-ocena{
+    font-size: 24px;
+    color: #333;
+}
+
+.destinacija-recenzija{
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.dodaj-recenziju-dugme{
+    margin-top: 20px;
+    background-color: #54b9ff;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.forma-recenzija{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.forma-recenzija input, .forma-recenzija textarea{
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.forma-recenzija button[type="submit"]{
+    background-color: #ff8854;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.forma-recenzija button[type="button"]{
+    background-color: #ccc;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
