@@ -17,14 +17,7 @@ function PutovanjaKomp() {
         const sacuvaniHit = localStorage.getItem('izabraniHit');
         return sacuvaniHit ? JSON.parse(sacuvaniHit) : [];
     })
-    useEffect(() => {
-        localStorage.setItem('izabraneDrzave', JSON.stringify(izabraneDrzave));
-    }, [izabraneDrzave])
-
-    useEffect(() => {
-        localStorage.setItem('izabraniHit', JSON.stringify(izabraniHit));
-    }, [izabraniHit])
-
+    
     const [trenutnaStrana, setTrenutnaStrana] = useState(1);
     const [putovanja, setPutovanja] = useState<Putovanje[]>([]);
     const [poslednjaStranica, setPoslednjaStranica] = useState<string | null>(null);
@@ -85,6 +78,7 @@ function PutovanjaKomp() {
         });
     }, [trenutnaStrana])
 
+
     useEffect(() => {
         setTrenutnaStrana(1);
     }, [search,izabraneDrzave,izabraniHit]);
@@ -94,7 +88,13 @@ function PutovanjaKomp() {
         setPoslednjaStranica(sacuvana);
     }, []);
 
-    
+    useEffect(() => {
+        localStorage.setItem('izabraneDrzave', JSON.stringify(izabraneDrzave));
+    }, [izabraneDrzave])
+
+    useEffect(() => {
+        localStorage.setItem('izabraniHit', JSON.stringify(izabraniHit));
+    }, [izabraniHit])
 
   return (
     <div className='putovanja-container'>
@@ -129,7 +129,7 @@ function PutovanjaKomp() {
 
             {poslednjaStranica && (
                 <div className='nastavi-container'>
-                    <Link to={poslednjaStranica} className='nastavi-dugme'>Nastavi tamo gde si stao</Link>
+                    <Link to={poslednjaStranica} className='nastavi-dugme'>Poslednje gledano</Link>
                 </div>
             )}
         </div>

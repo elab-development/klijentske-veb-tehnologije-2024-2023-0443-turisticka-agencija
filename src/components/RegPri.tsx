@@ -5,12 +5,14 @@ import '../css/regpri.css'
 function RegPri() {
     const [activeTab, setActiveTab] = useState<'register' | 'login'>('register');
     const navigate = useNavigate();
+    const [imePrezime, setImePrezime] = useState('');
 
     const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
 
         if(form.checkValidity()){
+            localStorage.setItem('imePrezime', imePrezime);
             setActiveTab('login');
         }
         else{
@@ -45,7 +47,7 @@ function RegPri() {
 
         {activeTab === 'register' ? (
             <form key='register' className='form' onSubmit={handleRegister}>
-                <input type="text" placeholder='Ime i prezime' required/>
+                <input type="text" placeholder='Ime i prezime' required value={imePrezime} onChange={(e) => setImePrezime(e.target.value)}/>
                 <input type="email" placeholder='Email' required/>
                 <input type="password" placeholder='Lozinka' required/>
                 <input type="password" placeholder='Potvrdi lozinku' required/>

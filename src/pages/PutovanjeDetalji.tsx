@@ -26,6 +26,13 @@ function PutovanjeDetalji() {
         return +(suma / recenzije.length).toFixed(2);
     }
 
+    useEffect(() => {
+        const sacuvanoIme = localStorage.getItem('imePrezime');
+        if(sacuvanoIme) {
+            setIme(sacuvanoIme);
+        }
+    }, [])
+
     interface Podaci {
         destinacije: Record<string, Putovanje>;
     }
