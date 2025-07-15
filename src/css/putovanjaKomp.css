@@ -45,6 +45,24 @@
     color: white;
 }
 
+.reset-filtera{
+    background-color: white;
+    color: #54B9FF;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3 ease;
+    border: none;
+    cursor: pointer;
+}
+
+.reset-filtera:hover{
+    background-color: #FF8854;
+    color: white;
+}
+
 .nastavi-container{
     margin-top: 10px;
     text-align: center;

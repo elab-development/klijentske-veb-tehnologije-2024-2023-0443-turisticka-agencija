@@ -8,8 +8,23 @@ import axios from 'axios'
 
 function PutovanjaKomp() {
     const [search, setSearch] = useState('');
-    const [izabraneDrzave, setIzabraneDrzave] = useState<string[]>([]);
-    const [izabraniHit, setIzabaniHit] = useState<string[]>([]);
+     
+    const [izabraneDrzave, setIzabraneDrzave] = useState<string[]>(() => {
+        const sacuvaneDrzave = localStorage.getItem('izabraneDrzave');
+        return sacuvaneDrzave ? JSON.parse(sacuvaneDrzave) : [];
+    })
+    const [izabraniHit, setIzabaniHit] = useState<string[]>(() => {
+        const sacuvaniHit = localStorage.getItem('izabraniHit');
+        return sacuvaniHit ? JSON.parse(sacuvaniHit) : [];
+    })
+    useEffect(() => {
+        localStorage.setItem('izabraneDrzave', JSON.stringify(izabraneDrzave));
+    }, [izabraneDrzave])
+
+    useEffect(() => {
+        localStorage.setItem('izabraniHit', JSON.stringify(izabraniHit));
+    }, [izabraniHit])
+
     const [trenutnaStrana, setTrenutnaStrana] = useState(1);
     const [putovanja, setPutovanja] = useState<Putovanje[]>([]);
     const [poslednjaStranica, setPoslednjaStranica] = useState<string | null>(null);
@@ -79,13 +94,15 @@ function PutovanjaKomp() {
         setPoslednjaStranica(sacuvana);
     }, []);
 
+    
+
   return (
     <div className='putovanja-container'>
         <div className='filteri-i-nastavi'>
             <div className='filteri'>
                 <h3>Pretražite destinaciju</h3>
                 <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder='Unesite destinaciju'/>
-            
+
                 <h3>Države</h3>
                 {['Francuska', 'Španija', 'Italija', 'Austrija'].map(drzava => (
                     <label key={drzava}>
@@ -93,7 +110,7 @@ function PutovanjaKomp() {
                         {drzava}
                     </label>
                 ))}
-    
+
                 <h3>HIT Ponude</h3>
                 {['Last Minute', 'Akcija'].map(hit =>(
                     <label key={hit}>
@@ -101,8 +118,15 @@ function PutovanjaKomp() {
                         {hit}
                     </label>
                 ))}
+
+                <button className='reset-filtera' onClick={() => {
+                    setIzabraneDrzave([]);
+                    setIzabaniHit([]);
+                    localStorage.removeItem('izabraneDrzave');
+                    localStorage.removeItem('izabraniHit');
+                }}>Resetuj filtere</button>
             </div>
-            
+
             {poslednjaStranica && (
                 <div className='nastavi-container'>
                     <Link to={poslednjaStranica} className='nastavi-dugme'>Nastavi tamo gde si stao</Link>
