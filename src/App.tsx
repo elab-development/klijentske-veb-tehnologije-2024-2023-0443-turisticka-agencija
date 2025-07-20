@@ -7,6 +7,7 @@ import MojProfil from './pages/MojProfil';
 import Registracija from './pages/Registracija';
 import ScrollToTop from './components/ScrollToTop';
 import PutovanjeDetalji from './pages/PutovanjeDetalji';
+import NasiVodici from './pages/NasiVodici';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path='/MojProfil' element={<MojProfil/>}/>
       <Route path='/Registracija' element={<Registracija/>}/>
       <Route path='/Putovanja/:id' element={<PutovanjeDetalji/>}/>
+      <Route path='/NasiVodici' element={<NasiVodici/>}/>
     </Routes>
     </BrowserRouter>
   );

@@ -44,6 +44,7 @@ function NavBar() {
             <div className='links'>
               <Link to='/'>Početna</Link>
               <Link to='/Putovanja'>Putovanja</Link>
+              <Link to='/NasiVodici'>Naši Vodiči</Link>
               <Link to='/MojProfil'>Moj Profil</Link>
               <Link to='/Registracija'>Registracija</Link>
             </div>
@@ -54,6 +55,7 @@ function NavBar() {
               <ul className='mobile-links'>
                 <li><Link to='/' onClick={() => setMenuOpen(false)}>Početna <span>&rsaquo;</span></Link></li>
                 <li><Link to='/Putovanja' onClick={() => setMenuOpen(false)}>Putovanja <span>&rsaquo;</span></Link></li>
+                <li><Link to='/NasiVodici' onClick={() => setMenuOpen(false)}>Naši Vodiči <span>&rsaquo;</span></Link></li>
                 <li><Link to='/MojProfil' onClick={() => setMenuOpen(false)}>Moj Profil <span>&rsaquo;</span></Link></li>
                 <li><Link to='/Registracija' onClick={() => setMenuOpen(false)}>Registracija <span>&rsaquo;</span></Link></li>
               </ul>

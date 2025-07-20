@@ -1,0 +1,29 @@
+[
+    {
+        "ime": "Andrija Marković",
+        "pol": "Muski",
+        "jezici": ["srpski", "engleski", "francuski", "španski"],
+        "drzave": ["Francuska", "Španija", "Italija"],
+        "godineIskustva": 12,
+        "ocena": 4.3,
+        "slika": "/slike/Marko.jpg"
+    },
+    {
+        "ime": "Ivan Petrović",
+        "pol": "Muski",
+        "jezici": ["srpski", "engleski"],
+        "drzave": ["Austrija", "Španija"],
+        "godineIskustva": 3,
+        "ocena": 4.6,
+        "slika": "/slike/Ivan.jpg"
+    },
+    {
+        "ime": "Jovana Filipović",
+        "pol": "Zenski",
+        "jezici": ["srpski", "engleski", "nemački", "italijanski", "francuski"],
+        "drzave": ["Austrija", "Španija", "Italija", "Francuska"],
+        "godineIskustva": 15,
+        "ocena": 4.9,
+        "slika": "/slike/Jovana.jpg"
+    }
+]

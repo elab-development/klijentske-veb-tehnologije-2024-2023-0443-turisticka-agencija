@@ -1,0 +1,23 @@
+[
+    {
+        "idPutovanja": 1,
+        "korisnik": "Ana Janković",
+        "ocena": 5,
+        "komentar": "Bilo je fantastično!",
+        "datum": "14-07-2025 10:34"
+    },
+    {
+        "idPutovanja": 2,
+        "korisnik": "Jovan Jokić",
+        "ocena": 4,
+        "komentar": "Sjajan vodič, ali smeštaj može biti bolji.",
+        "datum": "13-07-2025 16:12"
+    },
+    {
+        "idPutovanja": 1,
+        "korisnik": "Milica Lukić",
+        "ocena": 2,
+        "komentar": "Loša organizacija!",
+        "datum": "12-07-2025 07:12"
+    }
+]

@@ -9,6 +9,12 @@
     margin: 0 auto;
 }
 
+.filteri-i-nastavi{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .filteri{
     width: 220px;
     flex-shrink: 0; 
@@ -37,6 +43,46 @@
 .filteri label{
     font-size: 14px;
     color: white;
+}
+
+.reset-filtera{
+    background-color: white;
+    color: #54B9FF;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3 ease;
+    border: none;
+    cursor: pointer;
+}
+
+.reset-filtera:hover{
+    background-color: #FF8854;
+    color: white;
+}
+
+.nastavi-container{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.nastavi-dugme{
+    display: inline-block;
+    background-color: #54B9FF;
+    color: white;
+    width: 220px;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3 ease;
+}
+
+.nastavi-dugme:hover{
+    color: white;
+    background-color: #FF8854;
 }
 
 .putovanja{

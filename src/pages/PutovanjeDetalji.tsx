@@ -1,22 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Putovanje } from '../models/Putovanje'
+import { Recenzija } from '../models/Recenzija'
 import axios from 'axios'
 import NavBar from '../components/NavBar'
 import '../css/putovanjeDetalji.css'
 
+
 function PutovanjeDetalji() {
     const {id} = useParams();
     const [putovanje, setPutovanje] = useState<Putovanje | null>(null);
+    const [recenzije, setRecenzije] = useState<Recenzija[]>([]);
 
     const [trenutnaSlika, setTrenutnaSlika] = useState(0)
+
+    const [dodavanje, setDodavanje] = useState(false);
+    const [ime, setIme] = useState('');
+    const [komentar, setKomentar] = useState('');
+    const [ocena, setOcena] = useState(5);
+    const [prosecnaOcena, setProsecnaOcena] = useState<number>(0);
+
+    const izracunajProsecnuOcenu = (recenzije: Recenzija[]) => {
+        if(recenzije.length === 0) return 0;
+        const suma = recenzije.reduce((acc, r) => acc + r.ocena, 0);
+        return +(suma / recenzije.length).toFixed(2);
+    }
+
+    useEffect(() => {
+        const sacuvanoIme = sessionStorage.getItem('imePrezime');
+        if(sacuvanoIme) {
+            setIme(sacuvanoIme);
+        }
+    }, [])
 
     interface Podaci {
         destinacije: Record<string, Putovanje>;
     }
 
+
     useEffect(() => {
+        sessionStorage.setItem('poslednjaStranica', window.location.pathname);
+
         if (!id) return;
+        const idNum = Number(id);
         axios.get<Podaci>('/podaci.json')
             .then(res => {
                 const nizPutovanja = Object.values(res.data.destinacije);
@@ -33,7 +59,14 @@ function PutovanjeDetalji() {
                 }
 
                 setPutovanje(odabrano);
+
             })
+            axios.get<Recenzija[]>('/recenzije.json').then(res => {
+                const filtrirane = res.data.filter(r => r.idPutovanja === idNum);
+                setRecenzije(filtrirane);
+                setProsecnaOcena(izracunajProsecnuOcenu(filtrirane));
+            })
+
     }, [id]);
 
     if(!putovanje){
@@ -48,6 +81,40 @@ function PutovanjeDetalji() {
 
     const prethodnaSlika = () => {
         setTrenutnaSlika((prev) => (prev-1 + slike.length) % slike.length)
+    }
+
+    const prikaziZvezdice = (ocena: number) => (
+        <>
+            {'★'.repeat(ocena)}
+            {'☆'.repeat(5-ocena)}
+        </>
+    )
+
+    const handleDodajRecenziju = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if(ime.trim() === '' || komentar.trim() === ''){
+            alert("Popunite sva polja!");
+            return;
+        }
+
+        const novaRecenzija: Recenzija = {
+            idPutovanja: Number(id),
+            korisnik: ime,
+            komentar: komentar,
+            ocena: ocena,
+            datum: new Date().toLocaleDateString()
+        };
+
+        setRecenzije(prev => {
+            const noveRecenzije = [...prev,novaRecenzija];
+            setProsecnaOcena(izracunajProsecnuOcenu(noveRecenzije));
+            return noveRecenzije;
+        });
+        setIme('');
+        setKomentar('');
+        setOcena(5);
+        setDodavanje(false);
     }
 
   return (
@@ -102,6 +169,43 @@ function PutovanjeDetalji() {
                     </ul>
                 </div>
             )}
+
+            
+            <div className='destinacija-recenzije'>
+                <div className='recenzije-header'>
+                    <h2>Recenzije</h2>
+                    {prosecnaOcena > 0 && (
+                        <p className='prosecna-ocena'>{prosecnaOcena}★</p>
+                    )}
+                </div>
+                {recenzije.length === 0 && <p>Još nema recenzija za ovu destinaciju.</p>}
+
+                {recenzije.map((r,i) => (
+                    <div key={i} className='destinacija-recenzija'>
+                        <strong>{r.korisnik}</strong> - {prikaziZvezdice(r.ocena)}
+                        <p>"{r.komentar}"</p>
+                        <small>{r.datum}</small>
+                    </div>
+                ))}
+
+                {!dodavanje && (
+                    <button className='dodaj-recenziju-dugme' onClick={() => setDodavanje(true)}>
+                        ➕ Dodaj recenziju
+                    </button>
+                )}
+
+                {dodavanje && (
+                    <form className='forma-recenzija' onSubmit={handleDodajRecenziju}>
+                        <input type="text" placeholder='Unesite Vaše ime' value={ime} onChange={e => setIme(e.target.value)} required/>
+                        <textarea placeholder='Unesite Vaš komentar' value={komentar} onChange={e => setKomentar(e.target.value)} required/>
+                        <input type="number" min={1} max={5} value={ocena} onChange={e => setOcena(+e.target.value)} required/>
+                        <button type='submit'>Pošalji recenziju</button>
+                        <button type='button' onClick={() => setDodavanje(false)}>Otkaži</button>
+                    </form>
+                )}
+            </div>
+            
+            
         </div>
     </>
   )
