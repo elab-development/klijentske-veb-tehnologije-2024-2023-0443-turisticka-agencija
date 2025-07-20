@@ -1,0 +1,199 @@
+.putovanja-container{
+    display: flex;
+    align-items: flex-start; 
+    gap: 32px;
+    padding: 24px 0;
+    padding-top: 100px;
+    margin-top: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filteri{
+    width: 220px;
+    flex-shrink: 0; 
+    flex-grow: 0;
+    flex-basis: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #54B9FF;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.filteri h3{
+    margin-top: 16px;
+    margin-bottom: 4px;
+    color: white;
+}
+
+.filteri input[type="text"]{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.filteri label{
+    font-size: 14px;
+    color: white;
+}
+
+.putovanja{
+    flex: 1; 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); 
+    gap: 24px;
+    padding: 0;
+}
+
+.kartica{
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.kartica .slika{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.oznaka-drzava{
+    margin-top: 8px;
+    background: #FF8854;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: white;
+}
+
+.naslov{
+    font-size: 16px;
+    font-weight: bold;
+    margin: 12px 0 4px 0;
+}
+
+.termini-labela{
+    font-size: 14px;
+    color: #555;
+    margin-top: auto;
+}
+
+.termini{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    
+}
+
+.termin{
+    background-color: #54B9FF;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: white;
+}
+
+.cena{
+    margin-top: auto;
+    font-weight: bold;
+    color: #FF8854;
+    margin-bottom: 12px;
+}
+
+.dugmici{
+    display: flex;
+    gap: 8px;
+}
+
+.dugme{
+    flex: 1;
+    padding: 10px;
+    font-weight: bold;
+    border: 2px solid #54B9FF;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.dugme.tamno{
+    background-color: #54B9FF;
+    color: white;
+    transition: background-color 0.3s ease, border-color 0.3 ease;
+    text-align: center;
+}
+
+.dugme.tamno:hover{
+    background-color: #FF8854;
+    border-color: #FF8854;
+}
+
+.dugme.svetlo{
+    background-color: white;
+    color: #54B9FF;
+    transition: background-color 0.3s ease, border-color 0.3 ease, color 0.3 ease;
+    text-align: center;
+}
+
+.dugme.svetlo:hover{
+    background-color: #FF8854;
+    color: white;
+    border-color: #FF8854;
+}
+
+.razdvajanje-stranica{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+    width: 100%;
+    grid-column: 1 / -1;
+}
+
+.razdvajanje-stranica button{
+    padding: 8px 14px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.razdvajanje-stranica .active{
+    background-color: #54B9FF;
+    color: white;
+}
+
+@media (max-width: 1024px){
+    .putovanja-container{
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+    }
+
+    .filteri{
+        margin-top: 80px;
+        width: 100%;
+        max-width:100%;
+        box-sizing: border-box;
+        padding: 16px;
+    }
+
+    .putovanja{
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .razdvajanje-stranica{
+        justify-content: center;
+        margin-top: 24px;
+    }
+}

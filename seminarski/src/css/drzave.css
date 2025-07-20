@@ -1,0 +1,29 @@
+.drzava-sekcija{
+    padding: 64px 32px;
+    background-color: #f4f4f4;
+    text-align: center;
+    
+}
+
+.naslov-sekcije{
+    font-size: 32px;
+    margin-top: 64px;
+    margin-bottom: 32px;
+    color: #000;
+    text-align: center;
+}
+
+.drzave-grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 64px;
+    padding: 0 16px;
+    margin-bottom: 100px;
+}
+
+@media (max-width: 768px){
+    .drzave-grid{
+        gap: 72px;
+    }
+}
