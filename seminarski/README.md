@@ -28,21 +28,21 @@ npm start
 
 ### `Tehnologije koje se koriste`
 
-•	React – za frontend aplikacije i rad sa komponentama.
-•	TypeScript – za lakše rukovanje podacima, kako bi svaka komponenta tačno znala koje informacije prima i prikazuje.
-•	React Router – za navigaciju između stranica.
-•	Axios – za komunikaciju sa serverom (u ovom slučaju čitanje podataka iz lokalnog JSON fajla).
-•	CSS – za stilizaciju elemenata aplikacije.
+1.	React – za frontend aplikacije i rad sa komponentama.
+2.	TypeScript – za lakše rukovanje podacima, kako bi svaka komponenta tačno znala koje informacije prima i prikazuje.
+3.	React Router – za navigaciju između stranica.
+4.	Axios – za komunikaciju sa serverom (u ovom slučaju čitanje podataka iz lokalnog JSON fajla).
+5.	CSS – za stilizaciju elemenata aplikacije.
 
 ### `Funkcionalnosti`
 
-•	Dinamički prikaz podataka za putovanja, vodiče i recenzije iz JSON fajlova
-•	Dodavanje novih recenzija
-•	Filtriranje po nazivu destinacije, državi, specijalnoj ponudi
-•	Prikaz detalja pojedinačnog putovanja
-•	Navigacija putem menija, burger meni
-•	Responzivan dizajn
-•	Paginacija
-•	Automatsko postavljanje podataka sa kartice na formu za upit
-•	Čuvanje podataka sa upita i prosleđivanje istih na drugu stranicu
-•	Galerija
+1.	Dinamički prikaz podataka za putovanja, vodiče i recenzije iz JSON fajlova
+2.	Dodavanje novih recenzija
+3.	Filtriranje po nazivu destinacije, državi, specijalnoj ponudi
+4.	Prikaz detalja pojedinačnog putovanja
+5.	Navigacija putem menija, burger meni
+6.	Responzivan dizajn
+7.	Paginacija
+8.	Automatsko postavljanje podataka sa kartice na formu za upit
+9.	Čuvanje podataka sa upita i prosleđivanje istih na drugu stranicu
+10.	Galerija
