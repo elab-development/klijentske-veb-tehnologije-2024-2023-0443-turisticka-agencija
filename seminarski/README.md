@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# Turistička Agencija – veb aplikacija
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplikacija predstavlja veb platformu namenjenu turističkoj agenciji. Korisnicima omogućava pregled putovanja, filtriranje destinacija, pregled detalja aranžmana, kao i slanje upita agenciji.
 
-## Available Scripts
+## Pokretanje projekta
 
-In the project directory, you can run:
+Prati sledeće korake kako bi pokrenuo/la aplikaciju na svojoj mašini:
 
-### `npm start`
+### `1. Kloniraj repozitorijum`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+git clone https://github.com/elab-development/klijentske-veb-tehnologije-2024-2023-0443-turisticka-agencija.git
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+U folderu se nalaze dva projekta, prvi je drugi domaći, drugi je seminarski rad.
+Uđi u folder za seminarski rad i pokreni Command Prompt.
+Kada se pokrene ukucaj sledeću komandu kako bi otvorio projekat u Visual Studio Code-u:
 
-### `npm test`
+code .
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `2. Instaliraj zavisnosti`
 
-### `npm run build`
+Kada se otvori Visual Studio Code, pokreni terminal i ukucaj:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `3. Pokreni razvojni server`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm start
 
-### `npm run eject`
+### `Tehnologije koje se koriste`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+•	React – za frontend aplikacije i rad sa komponentama.
+•	TypeScript – za lakše rukovanje podacima, kako bi svaka komponenta tačno znala koje informacije prima i prikazuje.
+•	React Router – za navigaciju između stranica.
+•	Axios – za komunikaciju sa serverom (u ovom slučaju čitanje podataka iz lokalnog JSON fajla).
+•	CSS – za stilizaciju elemenata aplikacije.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `Funkcionalnosti`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+•	Dinamički prikaz podataka za putovanja, vodiče i recenzije iz JSON fajlova
+•	Dodavanje novih recenzija
+•	Filtriranje po nazivu destinacije, državi, specijalnoj ponudi
+•	Prikaz detalja pojedinačnog putovanja
+•	Navigacija putem menija, burger meni
+•	Responzivan dizajn
+•	Paginacija
+•	Automatsko postavljanje podataka sa kartice na formu za upit
+•	Čuvanje podataka sa upita i prosleđivanje istih na drugu stranicu
+•	Galerija
